@@ -12,7 +12,9 @@
 
       <button class="btn btn-primary mb-3" @click="mostrar = !mostrar">Alternar</button>
 
-      <div class="alert alert-primary" v-if="mostrar">Animações no Vue</div>
+      <transition>
+        <div class="alert alert-primary" v-if="mostrar">Animações no Vue</div>
+      </transition>
 
     </div>
 
@@ -28,3 +30,34 @@ export default {
   }
 }
 </script>
+
+<style scoped>
+
+  /* entrada */
+  .v-enter {
+
+  }
+
+  .v-enter-active {
+
+  }
+
+  .v-enter-to {
+
+  }
+
+  /* saída */
+  .v-leave {
+
+  }
+
+  .v-leave-active {
+
+  }
+
+  .v-leave-to {
+    
+  }
+
+</style>
+
