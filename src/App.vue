@@ -12,7 +12,7 @@
 
       <button class="btn btn-primary mb-3" @click="mostrar = !mostrar">Alternar</button>
 
-      <transition name="slide" type="animation">
+      <transition name="slide" type="animation" :duration="{ enter: 1200, leave: 500 }">
         <div class="alert alert-primary" v-if="mostrar">Animações no Vue</div>
       </transition>
 
