@@ -38,8 +38,8 @@ export default {
   }
 
   .slide-enter-active {
-    animation: slide 0.7s;
-    transition: opacity 0.7s;
+    animation: slide 0.7s cubic-bezier(.87,.36,1,.23);
+    transition: opacity 0.7s cubic-bezier(.87,.36,1,.23);
   }
 
   .slide-leave-active {
