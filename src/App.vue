@@ -33,30 +33,12 @@ export default {
 
 <style scoped>
 
-  /* entrada */
-  .fade-enter {
+  .fade-enter, .fade-leave-to {
     opacity: 0;
   }
 
-  .fade-enter-active {
+  .fade-enter-active, .fade-leave-active {
     transition: opacity 1s;
-  }
-
-  .fade-enter-to {
-    opacity: 1;
-  }
-
-  /* saída */
-  .fade-leave {
-    opacity: 1;
-  }
-
-  .fade-leave-active {
-    transition: opacity 1s;
-  }
-
-  .fade-leave-to {
-    opacity: 0;
   }
 
 </style>
