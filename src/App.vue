@@ -12,7 +12,7 @@
 
       <button class="btn btn-primary mb-3" @click="mostrar = !mostrar">Alternar</button>
 
-      <transition name="zoom">
+      <transition name="slide">
         <div class="alert alert-primary" v-if="mostrar">Animações no Vue</div>
       </transition>
 
@@ -33,6 +33,40 @@ export default {
 
 <style scoped>
 
+  .slide-enter {
+
+  }
+
+  .slide-enter-active {
+    animation: slide 0.7s;
+  }
+
+  .slide-enter-to {
+
+  }
+
+  .slide-leave {
+
+  }
+
+  .slide-leave-active {
+    animation: slide 0.7s reverse;
+  }
+
+  .slide-leave-to {
+    
+  }
+
+  @keyframes slide {
+    0% {
+      transform: translateX(-100px);
+    }
+    100% {
+      transform: translateX(0px);
+    }
+  }
+
+  /* zoom */
   .zoom-enter, .zoom-leave-to {
     transform: scale(0);
   }
@@ -41,6 +75,7 @@ export default {
     transition: transform 0.5s;
   }
 
+  /* fade */
   .fade-enter, .fade-leave-to {
     opacity: 0;
   }
