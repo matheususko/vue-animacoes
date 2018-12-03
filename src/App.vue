@@ -12,7 +12,7 @@
 
       <button class="btn btn-primary mb-3" @click="mostrar = !mostrar">Alternar</button>
 
-      <transition name="fade">
+      <transition name="zoom">
         <div class="alert alert-primary" v-if="mostrar">Animações no Vue</div>
       </transition>
 
@@ -32,6 +32,14 @@ export default {
 </script>
 
 <style scoped>
+
+  .zoom-enter, .zoom-leave-to {
+    transform: scale(0);
+  }
+
+  .zoom-enter-active, .zoom-leave-active {
+    transition: transform 0.5s;
+  }
 
   .fade-enter, .fade-leave-to {
     opacity: 0;
