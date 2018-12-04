@@ -19,6 +19,11 @@
           appear-active-class="animated flipInY"
           appear-to-class=""
 
+          @before-appear="beforeAppear"
+          @appear="appear"
+          @after-appear="afterAppear"
+          @appear-cancelled="appearCancelled"
+
           enter-class=""
           enter-active-class="animated bounceInLeft"
           enter-to-class=""
@@ -44,6 +49,20 @@ export default {
     }
   },
   methods: {
+
+    beforeAppear(el) {
+      console.log('beforeAppear')
+    },
+    appear(el, done) {
+      console.log('appear')
+      setTimeout(done, 1000)
+    },
+    afterAppear(el) {
+      console.log('afterAppear')
+    },
+    appearCancelled(el) {
+      console.log('appearCancelled')
+    },
 
     beforeEnter(el) {
       console.log('beforeEnter')
