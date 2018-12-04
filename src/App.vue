@@ -13,6 +13,8 @@
       <button class="btn btn-primary mb-3" @click="mostrar = !mostrar">Alternar</button>
 
       <transition
+
+        appear
       
         @before-enter="beforeEnter"
         @enter="enter"
