@@ -12,28 +12,16 @@
 
       <button class="btn btn-primary mb-3" @click="mostrar = !mostrar">Alternar</button>
 
-      <transition
-      
-          appear
-          appear-class=""
-          appear-active-class="animated flipInY"
-          appear-to-class=""
+      <div class="form-group">
+        <select class="form-control" v-model="animacaoSelecionada">
+          <option value="fade">Fade</option>
+          <option value="zoom">Zoom</option>
+          <option value="slide">Slide</option>
+        </select>
+      </div>
 
-          @before-appear="beforeAppear"
-          @appear="appear"
-          @after-appear="afterAppear"
-          @appear-cancelled="appearCancelled"
-
-          enter-class=""
-          enter-active-class="animated bounceInLeft"
-          enter-to-class=""
-
-          leave-class=""
-          leave-active-class="animated bounceOutDown"
-          leave-to-class=""
-
-        >
-          <div class="alert alert-primary" v-if="mostrar">Animações no Vue</div>
+      <transition :name="animacaoSelecionada">
+        <div class="alert alert-primary" v-if="mostrar">Animações no Vue</div>
       </transition>
 
     </div>
@@ -45,86 +33,9 @@
 export default {
   data() {
     return {
-      mostrar: true
+      mostrar: true,
+      animacaoSelecionada: 'fade'
     }
-  },
-  methods: {
-
-    beforeAppear(el) {
-      console.log('beforeAppear')
-    },
-    appear(el, done) {
-      console.log('appear')
-      setTimeout(done, 1000)
-    },
-    afterAppear(el) {
-      console.log('afterAppear')
-    },
-    appearCancelled(el) {
-      console.log('appearCancelled')
-    },
-
-    beforeEnter(el) {
-      console.log('beforeEnter')
-      el.style.opacity = 0
-    },
-    enter(el, done) {
-      console.log('enter')
-
-      let contagem = 0
-
-      const intervalo = setInterval(() => {
-
-        el.style.opacity = +el.style.opacity + 0.1
-        contagem++
-
-        if (contagem > 10) {
-          clearInterval(intervalo)
-          done()
-        }
-
-      }, 150)
-
-    },
-    afterEnter(el) {
-      console.log('afterEnter')
-    },
-    enterCancelled(el) {
-      console.log('enterCancelled')
-    },
-
-    beforeLeave(el) {
-      console.log('beforeLeave')
-      el.style.transition = 'width 0.5s'
-      el.style.overflow = 'hidden'
-      el.style.whiteSpace = 'nowrap'
-    },
-    leave(el, done) {
-      console.log('leave')
-
-      let contagem = 0
-      const tamanho = el.offsetWidth
-
-      const intervalo = setInterval(() => {
-
-        el.style.width = (tamanho * (1 - (contagem / 10))) + 'px'
-        contagem++
-
-        if (contagem > 10) {
-          clearInterval(intervalo)
-          done()
-        }
-
-      }, 150)
-
-    },
-    afterLeave(el) {
-      console.log('afterLeave')
-    },
-    leaveCancelled(el) {
-      console.log('leaveCancelled')
-    }
-
   }
 }
 </script>
