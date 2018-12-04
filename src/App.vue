@@ -13,23 +13,22 @@
       <button class="btn btn-primary mb-3" @click="mostrar = !mostrar">Alternar</button>
 
       <transition
-
-        appear
       
-        @before-enter="beforeEnter"
-        @enter="enter"
-        @after-enter="afterEnter"
-        @enter-cancelled="enterCancelled"
+          appear
+          appear-class=""
+          appear-active-class="animated flipInY"
+          appear-to-class=""
 
-        @before-leave="beforeLeave"
-        @leave="leave"
-        @after-leave="afterLeave"
-        @leave-cancelled="leaveCancelled"
+          enter-class=""
+          enter-active-class="animated bounceInLeft"
+          enter-to-class=""
 
-        :css="false"
+          leave-class=""
+          leave-active-class="animated bounceOutDown"
+          leave-to-class=""
 
         >
-        <div class="alert alert-primary" v-if="mostrar">Animações no Vue</div>
+          <div class="alert alert-primary" v-if="mostrar">Animações no Vue</div>
       </transition>
 
     </div>
