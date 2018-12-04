@@ -46,10 +46,25 @@ export default {
 
     beforeEnter(el) {
       console.log('beforeEnter')
+      el.style.opacity = 0
     },
     enter(el, done) {
       console.log('enter')
-      done()
+
+      let contagem = 0
+
+      const intervalo = setInterval(() => {
+
+        el.style.opacity = +el.style.opacity + 0.1
+        contagem++
+
+        if (contagem > 10) {
+          clearInterval(intervalo)
+          done()
+        }
+
+      }, 150)
+
     },
     afterEnter(el) {
       console.log('afterEnter')
@@ -60,10 +75,28 @@ export default {
 
     beforeLeave(el) {
       console.log('beforeLeave')
+      el.style.transition = 'width 0.5s'
+      el.style.overflow = 'hidden'
+      el.style.whiteSpace = 'nowrap'
     },
     leave(el, done) {
       console.log('leave')
-      done()
+
+      let contagem = 0
+      const tamanho = el.offsetWidth
+
+      const intervalo = setInterval(() => {
+
+        el.style.width = (tamanho * (1 - (contagem / 10))) + 'px'
+        contagem++
+
+        if (contagem > 10) {
+          clearInterval(intervalo)
+          done()
+        }
+
+      }, 150)
+
     },
     afterLeave(el) {
       console.log('afterLeave')
