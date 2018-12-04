@@ -20,8 +20,8 @@
         </select>
       </div>
 
-      <transition :name="animacaoSelecionada">
-        <div class="alert alert-info" v-if="mostrar" key="informaca">Animações no Vue (informação)</div>
+      <transition :name="animacaoSelecionada" mode="out-in">
+        <div class="alert alert-info" v-if="mostrar" key="informacao">Animações no Vue (informação)</div>
         <div class="alert alert-success" v-else key="sucesso">Animações no Vue (success)</div>
       </transition>
 
@@ -62,7 +62,7 @@ export default {
 
   .slide-leave-active {
     animation: slide 0.7s reverse;
-    transition: opacity 2s;
+    transition: opacity 0.7s;
   }
 
   @keyframes slide {
