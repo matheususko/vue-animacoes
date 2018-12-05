@@ -79,5 +79,10 @@ export default {
     transition: all 1s;
   }
 
+  .list-leave-active {
+    position: absolute;
+    width: calc(100% - 100px);
+  }
+
 </style>
 
