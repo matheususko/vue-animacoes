@@ -10,40 +10,18 @@
 
     <div class="container">
 
-      <h3 class="font-weight-light">Tecnologias</h3>
+      <h3 class="font-weight-light">Animações de estado</h3>
 
-      <div class="row">
-
-        <div class="col-sm-2">
-          <button class="btn btn-info" @click="embaralhar">Embaralhar</button>
-        </div>
-
-        <div class="col-sm-10">
-          <div class="form-group">
-            <input 
-              type="text" 
-              class="form-control"
-              placeholder="Insira um novo item e pressione Enter"
-              @keyup.enter="adicionar"
-              ref="input">
-          </div>        
-        </div>
-
+      <div class="form-group">
+        <input class="form-control" v-model="numero" step="50">
       </div>
 
-      <transition-group tag="ul" class="list-group" name="list">
-        <li 
-          class="list-group-item"
-          v-for="(tecnologia, indice) in tecnologias"
-          :key="tecnologia">
-            <span>{{ tecnologia }}</span>
-            <button 
-              class="btn btn-danger btn-sm float-right"
-              @click="remover(indice)">
-                x
-            </button>
-        </li>
-      </transition-group>
+      <div class="alert alert-info">
+        <h3 class="font-weight-light">
+          <strong>Número: </strong>
+          <span>{{ numero }}</span>
+        </h3>
+      </div>      
 
     </div>
 
@@ -52,53 +30,13 @@
 
 <script>
 
-import { shuffle } from 'lodash'
-
 export default {
   data() {
     return {
-      tecnologias: [
-        'JavaScript',
-        'Vue JS',
-        'Vuex',
-        'Vue Router'
-      ]
-    }
-  },
-  methods: {
-    adicionar(event) {
-      const novoIten = event.target.value
-      if (novoIten) {
-        const indice = Math.floor(Math.random() * this.tecnologias.length)
-        this.tecnologias.splice(indice, 0, novoIten)
-        this.$refs.input.value = ''
-      }
-    },
-    remover(indice) {
-      this.tecnologias.splice(indice, 1)
-    },
-    embaralhar(event) {
-      this.tecnologias = shuffle(this.tecnologias)
+      numero: 0
     }
   }
 }
+
 </script>
-
-<style scoped>
-
-  .list-enter, .list-leave-to {
-    opacity: 0;
-    transform: translateX(-70px);
-  }
-
-  .list-enter-active, .list-leave-active, .list-move {
-    transition: all 1s;
-  }
-
-  .list-leave-active {
-    position: absolute;
-    width: calc(100% - 100px);
-  }
-
-</style>
 
